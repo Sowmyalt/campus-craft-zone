@@ -1,73 +1,59 @@
-# Welcome to your Lovable project
+# 🎓 Campus Craft Zone  
 
-## Project info
+**Campus Craft Zone** is a pure **HTML, CSS, and JavaScript** application designed to help students manage their academics effectively.  
+It includes tools for assignments, CGPA calculation, notes, and study resources — all in one responsive dashboard.  
 
-**URL**: https://lovable.dev/projects/007ceb91-4fe3-47ad-a9a3-bf60497b3a94
+---
 
-## How can I edit this code?
+## ✅ What's Complete  
 
-There are several ways of editing your application.
+- 🏠 **Homepage (index.html)** – Beautiful landing page with hero section and feature cards  
+- 📋 **Assignment Tracker (assignments.html)** – Full task management with priorities and deadlines  
+- 📊 **CGPA Calculator (cgpa.html)** – Interactive grade calculator with 4.0 scale  
+- 📝 **Quick Notes (notes.html)** – Text notes, audio recording, and photo uploads  
+- 📚 **Study Resources (resources.html)** – Resource library with ratings and filtering  
 
-**Use Lovable**
+---
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/007ceb91-4fe3-47ad-a9a3-bf60497b3a94) and start prompting.
+## 🎨 Pure Web Technologies  
 
-Changes made via Lovable will be committed automatically to this repo.
+- **HTML5** – Semantic structure with proper SEO meta tags  
+- **CSS3** – Custom design system with academic colors, gradients, and smooth animations  
+- **Vanilla JavaScript** – Full functionality including Web APIs for audio recording  
+- **Local Storage** – Data persistence across sessions  
+- **Font Awesome** – Beautiful icons throughout  
 
-**Use your preferred IDE**
+---
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+## 🚀 Key Features  
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+- 📱 Responsive design for all devices  
+- 🎤 Audio recording using **MediaRecorder API**  
+- 🖼️ Image upload with **FileReader API**  
+- 🔍 Search and filtering capabilities  
+- 🔔 Toast notifications for actions  
+- ⭐ Star rating system for resources  
+- 💾 Data export/import via **localStorage**  
 
-Follow these steps:
+---
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+## 📌 How to Run  
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+1. Clone the repository:  
+   ```bash
+   git clone https://github.com/Sowmyalt/campus-craft-zone.git
+   cd campus-craft-zone
 
-# Step 3: Install the necessary dependencies.
-npm i
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
+🎯 Summary
 
-**Edit a file directly in GitHub**
+The website is now fully functional using only HTML, CSS, and JavaScript as requested!
+Students can:
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+Track assignments ✅
 
-**Use GitHub Codespaces**
+Calculate CGPA ✅
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+Take notes with multimedia ✅
 
-## What technologies are used for this project?
-
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/007ceb91-4fe3-47ad-a9a3-bf60497b3a94) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+Organize study resources ✅
