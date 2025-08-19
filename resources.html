@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Resources - Campus Craft Zone</title>
+    <meta name="description" content="Discover and organize study resources including books, videos, documents, and websites for your academic success.">
+    <link rel="stylesheet" href="styles/main.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-graduation-cap"></i>
+                    <h1>Campus Craft Zone</h1>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Navigation -->
+    <nav class="page-nav">
+        <div class="container">
+            <div class="nav-content">
+                <a href="index.html" class="back-btn">
+                    <i class="fas fa-arrow-left"></i>
+                    Back to Home
+                </a>
+                <h2>Study Resources</h2>
+                <button class="btn btn-primary" id="addResourceBtn">
+                    <i class="fas fa-plus"></i>
+                    Add Resource
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container" style="padding: 2rem 1rem;">
+        <!-- Filters -->
+        <div style="margin-bottom: 1.5rem;">
+            <div style="position: relative; margin-bottom: 1rem;">
+                <i class="fas fa-search" style="position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); color: var(--text-muted);"></i>
+                <input type="text" id="searchInput" class="form-input" placeholder="Search resources by title, description, or tags..." style="padding-left: 2.5rem;">
+            </div>
+            
+            <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                <select id="subjectFilter" class="form-select" style="min-width: 150px;">
+                    <option value="All">All Subjects</option>
+                </select>
+                <select id="typeFilter" class="form-select" style="min-width: 120px;">
+                    <option value="All">All Types</option>
+                    <option value="book">Books</option>
+                    <option value="video">Videos</option>
+                    <option value="document">Documents</option>
+                    <option value="website">Websites</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Add Resource Form -->
+        <div id="addResourceForm" class="card" style="display: none; margin-bottom: 1.5rem;">
+            <div class="card-header">
+                <h3 class="card-title">
+                    <i class="fas fa-plus"></i>
+                    Add Study Resource
+                </h3>
+            </div>
+            <form id="resourceForm">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin-bottom: 1rem;">
+                    <div class="form-group">
+                        <label class="form-label" for="resourceTitle">Resource Title *</label>
+                        <input type="text" id="resourceTitle" class="form-input" placeholder="Enter resource title" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="resourceSubject">Subject *</label>
+                        <input type="text" id="resourceSubject" class="form-input" placeholder="Enter subject" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="resourceUrl">URL *</label>
+                        <input type="url" id="resourceUrl" class="form-input" placeholder="https://..." required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="resourceType">Type</label>
+                        <select id="resourceType" class="form-select">
+                            <option value="website">Website</option>
+                            <option value="book">Book</option>
+                            <option value="video">Video</option>
+                            <option value="document">Document</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="resourceDescription">Description</label>
+                    <textarea id="resourceDescription" class="form-textarea" placeholder="Describe this resource..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="resourceTags">Tags (comma separated)</label>
+                    <input type="text" id="resourceTags" class="form-input" placeholder="e.g., free, interactive, beginner">
+                </div>
+                <div style="display: flex; gap: 1rem;">
+                    <button type="submit" class="btn btn-primary">Add Resource</button>
+                    <button type="button" class="btn btn-outline" id="cancelResourceBtn">Cancel</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Resources List -->
+        <div id="resourcesList">
+            <!-- Resources will be populated here -->
+        </div>
+
+        <!-- Summary Stats -->
+        <div class="stats-grid" style="margin-top: 2rem;">
+            <div class="card" style="text-align: center; padding: 1.5rem;">
+                <div class="stat-number primary" id="totalResourcesCount">0</div>
+                <div class="stat-label">Total Resources</div>
+            </div>
+            <div class="card" style="text-align: center; padding: 1.5rem;">
+                <div class="stat-number secondary" id="subjectsCount">0</div>
+                <div class="stat-label">Subjects</div>
+            </div>
+            <div class="card" style="text-align: center; padding: 1.5rem;">
+                <div class="stat-number accent" id="highRatedCount">0</div>
+                <div class="stat-label">High Rated</div>
+            </div>
+            <div class="card" style="text-align: center; padding: 1.5rem;">
+                <div class="stat-number primary" id="videoResourcesCount">0</div>
+                <div class="stat-label">Video Resources</div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast">
+        <i class="fas fa-check-circle"></i>
+        <span id="toast-message"></span>
+    </div>
+
+    <script src="scripts/main.js"></script>
+    <script src="scripts/resources.js"></script>
+
+    <style>
+        .star-rating {
+            display: flex;
+            gap: 0.125rem;
+        }
+        
+        .star {
+            color: #ddd;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+        
+        .star.filled {
+            color: #fbbf24;
+        }
+        
+        .star:hover {
+            color: #fbbf24;
+        }
+        
+        .resource-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+        
+        .resource-link:hover {
+            color: var(--primary-light);
+            transform: translateX(2px);
+        }
+    </style>
+</body>
+</html>

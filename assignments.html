@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment Tracker - Campus Craft Zone</title>
+    <meta name="description" content="Track and manage all your assignments with deadlines, priorities, and progress tracking.">
+    <link rel="stylesheet" href="styles/main.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-graduation-cap"></i>
+                    <h1>Campus Craft Zone</h1>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Navigation -->
+    <nav class="page-nav">
+        <div class="container">
+            <div class="nav-content">
+                <a href="index.html" class="back-btn">
+                    <i class="fas fa-arrow-left"></i>
+                    Back to Home
+                </a>
+                <h2>Assignment Tracker</h2>
+                <button class="btn btn-primary" id="addAssignmentBtn">
+                    <i class="fas fa-plus"></i>
+                    Add Assignment
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container" style="padding: 2rem 1rem;">
+        <!-- Add Assignment Form -->
+        <div id="addAssignmentForm" class="card" style="display: none; margin-bottom: 2rem;">
+            <div class="card-header">
+                <h3 class="card-title">
+                    <i class="fas fa-plus"></i>
+                    Add New Assignment
+                </h3>
+            </div>
+            <form id="assignmentForm">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin-bottom: 1rem;">
+                    <div class="form-group">
+                        <label class="form-label" for="assignmentTitle">Assignment Title *</label>
+                        <input type="text" id="assignmentTitle" class="form-input" placeholder="Enter assignment title" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="assignmentSubject">Subject *</label>
+                        <input type="text" id="assignmentSubject" class="form-input" placeholder="Enter subject name" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="assignmentDueDate">Due Date *</label>
+                        <input type="date" id="assignmentDueDate" class="form-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="assignmentPriority">Priority</label>
+                        <select id="assignmentPriority" class="form-select">
+                            <option value="low">Low</option>
+                            <option value="medium" selected>Medium</option>
+                            <option value="high">High</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="assignmentDescription">Description</label>
+                    <textarea id="assignmentDescription" class="form-textarea" placeholder="Enter assignment description"></textarea>
+                </div>
+                <div style="display: flex; gap: 1rem;">
+                    <button type="submit" class="btn btn-primary">Add Assignment</button>
+                    <button type="button" class="btn btn-outline" id="cancelAddBtn">Cancel</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Assignments List -->
+        <div id="assignmentsList">
+            <!-- Assignments will be populated here -->
+        </div>
+
+        <!-- Summary Stats -->
+        <div id="summaryStats" class="stats-grid" style="margin-top: 2rem;">
+            <div class="card" style="text-align: center; padding: 1.5rem;">
+                <div class="stat-number primary" id="pendingCount">0</div>
+                <div class="stat-label">Pending</div>
+            </div>
+            <div class="card" style="text-align: center; padding: 1.5rem;">
+                <div class="stat-number secondary" id="completedCount">0</div>
+                <div class="stat-label">Completed</div>
+            </div>
+            <div class="card" style="text-align: center; padding: 1.5rem;">
+                <div class="stat-number accent" id="overdueCount">0</div>
+                <div class="stat-label">Overdue</div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast">
+        <i class="fas fa-check-circle"></i>
+        <span id="toast-message"></span>
+    </div>
+
+    <script src="scripts/main.js"></script>
+    <script src="scripts/assignments.js"></script>
+</body>
+</html>

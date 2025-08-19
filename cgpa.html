@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CGPA Calculator - Campus Craft Zone</title>
+    <meta name="description" content="Calculate your CGPA and track your academic progress with our easy-to-use grade calculator.">
+    <link rel="stylesheet" href="styles/main.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-graduation-cap"></i>
+                    <h1>Campus Craft Zone</h1>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Navigation -->
+    <nav class="page-nav">
+        <div class="container">
+            <div class="nav-content">
+                <a href="index.html" class="back-btn">
+                    <i class="fas fa-arrow-left"></i>
+                    Back to Home
+                </a>
+                <h2>CGPA Calculator</h2>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container" style="padding: 2rem 1rem;">
+        <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 2rem; align-items: start;">
+            
+            <!-- CGPA Result -->
+            <div>
+                <div class="card" style="text-align: center; background: linear-gradient(135deg, var(--primary), var(--primary-light)); color: white; margin-bottom: 1.5rem;">
+                    <div class="card-header">
+                        <h3 class="card-title" style="color: white;">
+                            <i class="fas fa-calculator"></i>
+                            Your CGPA
+                        </h3>
+                    </div>
+                    <div style="font-size: 4rem; font-weight: bold; margin-bottom: 1rem;" id="cgpaDisplay">0.00</div>
+                    <div style="display: flex; align-items: center; justify-content: center; gap: 0.5rem; margin-bottom: 0.5rem;" id="cgpaStatus">
+                        <i class="fas fa-target"></i>
+                        <span>Not Calculated</span>
+                    </div>
+                    <div style="font-size: 0.9rem; opacity: 0.8;">Out of 4.00 scale</div>
+                </div>
+
+                <!-- Stats -->
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                    <div class="card" style="text-align: center; padding: 1.5rem;">
+                        <div class="stat-number primary" id="subjectCount">0</div>
+                        <div class="stat-label">Subjects</div>
+                    </div>
+                    <div class="card" style="text-align: center; padding: 1.5rem;">
+                        <div class="stat-number accent" id="totalCredits">0</div>
+                        <div class="stat-label">Total Credits</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Subject Management -->
+            <div>
+                <!-- Add Subject Form -->
+                <div class="card" style="margin-bottom: 1.5rem;">
+                    <div class="card-header">
+                        <h3 class="card-title">Add Subject</h3>
+                    </div>
+                    <form id="subjectForm">
+                        <div style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+                            <div class="form-group">
+                                <label class="form-label" for="subjectName">Subject Name</label>
+                                <input type="text" id="subjectName" class="form-input" placeholder="Enter subject name" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="subjectCredits">Credits</label>
+                                <input type="number" id="subjectCredits" class="form-input" placeholder="Credits" min="1" max="6" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="subjectGrade">Grade</label>
+                                <select id="subjectGrade" class="form-select">
+                                    <option value="A+">A+ (4.0)</option>
+                                    <option value="A" selected>A (4.0)</option>
+                                    <option value="A-">A- (3.7)</option>
+                                    <option value="B+">B+ (3.3)</option>
+                                    <option value="B">B (3.0)</option>
+                                    <option value="B-">B- (2.7)</option>
+                                    <option value="C+">C+ (2.3)</option>
+                                    <option value="C">C (2.0)</option>
+                                    <option value="C-">C- (1.7)</option>
+                                    <option value="D+">D+ (1.3)</option>
+                                    <option value="D">D (1.0)</option>
+                                    <option value="F">F (0.0)</option>
+                                </select>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-plus"></i>
+                            Add Subject
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Subject List -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Your Subjects</h3>
+                    </div>
+                    <div id="subjectsList">
+                        <!-- Subjects will be populated here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Grade Scale Reference -->
+        <div class="card" style="margin-top: 2rem;">
+            <div class="card-header">
+                <h3 class="card-title">Grade Scale Reference</h3>
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(80px, 1fr)); gap: 0.75rem;">
+                <div style="text-align: center; padding: 0.75rem; background: var(--border-light); border-radius: var(--radius-md);">
+                    <div style="font-weight: bold;">A+</div>
+                    <div style="font-size: 0.8rem; color: var(--text-secondary);">4.0</div>
+                </div>
+                <div style="text-align: center; padding: 0.75rem; background: var(--border-light); border-radius: var(--radius-md);">
+                    <div style="font-weight: bold;">A</div>
+                    <div style="font-size: 0.8rem; color: var(--text-secondary);">4.0</div>
+                </div>
+                <div style="text-align: center; padding: 0.75rem; background: var(--border-light); border-radius: var(--radius-md);">
+                    <div style="font-weight: bold;">A-</div>
+                    <div style="font-size: 0.8rem; color: var(--text-secondary);">3.7</div>
+                </div>
+                <div style="text-align: center; padding: 0.75rem; background: var(--border-light); border-radius: var(--radius-md);">
+                    <div style="font-weight: bold;">B+</div>
+                    <div style="font-size: 0.8rem; color: var(--text-secondary);">3.3</div>
+                </div>
+                <div style="text-align: center; padding: 0.75rem; background: var(--border-light); border-radius: var(--radius-md);">
+                    <div style="font-weight: bold;">B</div>
+                    <div style="font-size: 0.8rem; color: var(--text-secondary);">3.0</div>
+                </div>
+                <div style="text-align: center; padding: 0.75rem; background: var(--border-light); border-radius: var(--radius-md);">
+                    <div style="font-weight: bold;">B-</div>
+                    <div style="font-size: 0.8rem; color: var(--text-secondary);">2.7</div>
+                </div>
+                <div style="text-align: center; padding: 0.75rem; background: var(--border-light); border-radius: var(--radius-md);">
+                    <div style="font-weight: bold;">C+</div>
+                    <div style="font-size: 0.8rem; color: var(--text-secondary);">2.3</div>
+                </div>
+                <div style="text-align: center; padding: 0.75rem; background: var(--border-light); border-radius: var(--radius-md);">
+                    <div style="font-weight: bold;">C</div>
+                    <div style="font-size: 0.8rem; color: var(--text-secondary);">2.0</div>
+                </div>
+                <div style="text-align: center; padding: 0.75rem; background: var(--border-light); border-radius: var(--radius-md);">
+                    <div style="font-weight: bold;">C-</div>
+                    <div style="font-size: 0.8rem; color: var(--text-secondary);">1.7</div>
+                </div>
+                <div style="text-align: center; padding: 0.75rem; background: var(--border-light); border-radius: var(--radius-md);">
+                    <div style="font-weight: bold;">D+</div>
+                    <div style="font-size: 0.8rem; color: var(--text-secondary);">1.3</div>
+                </div>
+                <div style="text-align: center; padding: 0.75rem; background: var(--border-light); border-radius: var(--radius-md);">
+                    <div style="font-weight: bold;">D</div>
+                    <div style="font-size: 0.8rem; color: var(--text-secondary);">1.0</div>
+                </div>
+                <div style="text-align: center; padding: 0.75rem; background: var(--border-light); border-radius: var(--radius-md);">
+                    <div style="font-weight: bold;">F</div>
+                    <div style="font-size: 0.8rem; color: var(--text-secondary);">0.0</div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast">
+        <i class="fas fa-check-circle"></i>
+        <span id="toast-message"></span>
+    </div>
+
+    <script src="scripts/main.js"></script>
+    <script src="scripts/cgpa.js"></script>
+</body>
+</html>

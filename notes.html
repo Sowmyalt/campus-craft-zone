@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quick Notes - Campus Craft Zone</title>
+    <meta name="description" content="Capture and organize your study notes with text, audio recordings, and photo uploads.">
+    <link rel="stylesheet" href="styles/main.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-graduation-cap"></i>
+                    <h1>Campus Craft Zone</h1>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Navigation -->
+    <nav class="page-nav">
+        <div class="container">
+            <div class="nav-content">
+                <a href="index.html" class="back-btn">
+                    <i class="fas fa-arrow-left"></i>
+                    Back to Home
+                </a>
+                <h2>Quick Notes</h2>
+                <div style="display: flex; gap: 0.5rem;">
+                    <button class="btn btn-outline" id="uploadImageBtn">
+                        <i class="fas fa-camera"></i>
+                        Upload Image
+                    </button>
+                    <button class="btn btn-outline" id="recordAudioBtn">
+                        <i class="fas fa-microphone"></i>
+                        Record Audio
+                    </button>
+                    <button class="btn btn-primary" id="addNoteBtn">
+                        <i class="fas fa-plus"></i>
+                        Add Note
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container" style="padding: 2rem 1rem;">
+        <!-- Search -->
+        <div style="margin-bottom: 1.5rem;">
+            <div style="position: relative;">
+                <i class="fas fa-search" style="position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); color: var(--text-muted);"></i>
+                <input type="text" id="searchInput" class="form-input" placeholder="Search notes by title, content, or tags..." style="padding-left: 2.5rem;">
+            </div>
+        </div>
+
+        <!-- Add Note Form -->
+        <div id="addNoteForm" class="card" style="display: none; margin-bottom: 1.5rem;">
+            <div class="card-header">
+                <h3 class="card-title">
+                    <i class="fas fa-plus"></i>
+                    Add Text Note
+                </h3>
+            </div>
+            <form id="noteForm">
+                <div class="form-group">
+                    <label class="form-label" for="noteTitle">Note Title</label>
+                    <input type="text" id="noteTitle" class="form-input" placeholder="Enter note title" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="noteContent">Content</label>
+                    <textarea id="noteContent" class="form-textarea" placeholder="Enter note content" style="min-height: 120px;" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="noteTags">Tags (comma separated)</label>
+                    <input type="text" id="noteTags" class="form-input" placeholder="e.g., lecture, math, important">
+                </div>
+                <div style="display: flex; gap: 1rem;">
+                    <button type="submit" class="btn btn-primary">Save Note</button>
+                    <button type="button" class="btn btn-outline" id="cancelNoteBtn">Cancel</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Recording Status -->
+        <div id="recordingStatus" class="card" style="display: none; margin-bottom: 1.5rem; background: linear-gradient(135deg, var(--accent), var(--accent-light)); color: white;">
+            <div style="display: flex; align-items: center; justify-content: center; gap: 1rem;">
+                <div style="width: 12px; height: 12px; background: white; border-radius: 50%; animation: pulse 1s infinite;"></div>
+                <span>Recording in progress... Click to stop</span>
+                <button class="btn btn-outline" id="stopRecordingBtn" style="color: white; border-color: white;">
+                    <i class="fas fa-stop"></i>
+                    Stop Recording
+                </button>
+            </div>
+        </div>
+
+        <!-- Notes List -->
+        <div id="notesList">
+            <!-- Notes will be populated here -->
+        </div>
+
+        <!-- Hidden file input -->
+        <input type="file" id="imageInput" accept="image/*" style="display: none;">
+    </main>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast">
+        <i class="fas fa-check-circle"></i>
+        <span id="toast-message"></span>
+    </div>
+
+    <script src="scripts/main.js"></script>
+    <script src="scripts/notes.js"></script>
+
+    <style>
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+        
+        .note-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+            margin-bottom: 1rem;
+        }
+        
+        .audio-player {
+            width: 100%;
+            margin-bottom: 1rem;
+        }
+        
+        .tag {
+            display: inline-block;
+            padding: 0.25rem 0.5rem;
+            background: var(--border-light);
+            border-radius: var(--radius-sm);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            margin-right: 0.5rem;
+            margin-bottom: 0.25rem;
+        }
+    </style>
+</body>
+</html>
